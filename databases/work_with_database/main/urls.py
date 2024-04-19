@@ -1,7 +1,7 @@
 """main URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.1/topics/http/urls/
+    https://docs.djangoproject.com/en/3.1/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-import phones.views
+import phone.views
 
+#не забудь ссылки добавить в индекс
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('catalog/', phones.views.show_catalog),
-    path('catalog/<slug:slug>/', phones.views.show_product),
+    path('', phone.views.index, name='home'),
+    path('catalog/', phone.views.show_catalog, name='catalog'),
+    path('catalog/<slug:slug>/', phone.views.show_product, name='phone'),
 ]
