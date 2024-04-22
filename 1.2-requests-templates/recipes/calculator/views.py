@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 
 DATA = {
@@ -28,3 +29,43 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+def index (request):
+    return HttpResponse(
+        """Омлет<br>
+        <a href=/omlet/?servings=1 >1 </a><a href=/omlet/?servings=2> 2 </a>
+        <a href=/omlet/?servings=3> 3 </a><a href=/omlet/?servings=4> 4 </a> <br>    
+        <a href=pasta/>Паста</a><br><a href = buter/>Бутер</a>""")
+
+def omlet(request):
+    count = int(request.GET.get('servings', '1'))
+    context = {
+        'recipe': {
+            'яйца, шт': 2*count,
+            'молоко, л': 0.1*count,
+            'coль ч.л.': 0.5*count
+        }
+    }
+    return render(request, 'calculator/index.html', context)
+
+def pasta(request):
+    count = int(request.GET.get('servings', '1'))
+    context = {
+          'recipe': {
+            'макароны, г': 0.3*count,
+            'сыр, г': 0.05*count,
+          }
+        }
+    # return HttpResponse("тут скоро будет Паста для {servings}")
+    return render(request, 'calculator/index.html', context)
+def buter(request):
+    count = int(request.GET.get('servings', '1'))
+    context = {
+          'recipe': {
+              'хлеб, ломтик': 1*count,
+              'колбаса, ломтик': 1*count,
+              'сыр, ломтик': 1*count,
+              'помидор, ломтик': 1*count,
+          }
+        }
+    # return HttpResponse("тут скоро будет Бутер для {servings}")
+    return render(request, 'calculator/index.html', context)
