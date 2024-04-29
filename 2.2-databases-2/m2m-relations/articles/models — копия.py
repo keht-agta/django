@@ -20,7 +20,6 @@ class Article(models.Model):
 class Tag(models.Model):
     scope = models.CharField(max_length=50, verbose_name='Раздел')
 
-
     class Meta:
         verbose_name = 'Раздел'
         verbose_name_plural = 'Разделы'
@@ -28,8 +27,7 @@ class Tag(models.Model):
     def __str__(self):
         return self.scope
 
-
 class Scope(models.Model):
-    name = models.ForeignKey(Tag,on_delete=models.CASCADE, related_name='scopes')
-    scopes = models.ForeignKey(Article,on_delete=models.CASCADE, related_name='scopes')
+    name = models.ForeignKey(Tag,on_delete=models.PROTECT, related_name='scopes')
+    scopes = models.ForeignKey(Article,on_delete=models.PROTECT, related_name='scopes')
     is_main = models.BooleanField(u'Главная')
