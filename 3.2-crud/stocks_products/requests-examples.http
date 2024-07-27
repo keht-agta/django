@@ -12,6 +12,57 @@ Content-Type: application/json
 }
 
 ###
+# создание продукта
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "грибы",
+  "description": "Лучшие грибы на рынке"
+}
+
+###
+# создание продукта
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "тыква",
+  "description": "Лучшие тыквы на рынке"
+}
+
+###
+# создание продукта
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "баклажан",
+  "description": "Лучшие баклажаны на рынке"
+}
+
+###
+
+# создание продукта
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "Картошка",
+  "description": "Лучший картофель на рынке"
+}
+###
+
+# создание продукта
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "кабачок",
+  "description": "Лучшие кабачки на рынке"
+}
+
+###
 
 # получение продуктов
 GET {{baseUrl}}/products/
@@ -19,8 +70,13 @@ Content-Type: application/json
 
 ###
 
+# получение продукта
+GET {{baseUrl}}/products/2/
+Content-Type: application/json
+
+###
 # обновление продукта
-PATCH {{baseUrl}}/products/1/
+PATCH {{baseUrl}}/products/2/
 Content-Type: application/json
 
 {
@@ -36,7 +92,12 @@ Content-Type: application/json
 ###
 
 # поиск продуктов по названию и описанию
-GET {{baseUrl}}/products/?search=помидор
+GET {{baseUrl}}/products/?search=помид
+Content-Type: application/json
+
+###
+# поиск продуктов по названию и описанию
+GET {{baseUrl}}/products/?search=кар
 Content-Type: application/json
 
 ###

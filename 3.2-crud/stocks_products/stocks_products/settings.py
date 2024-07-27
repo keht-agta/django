@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'logistic',
+
 ]
 
 MIDDLEWARE = [
@@ -80,11 +82,14 @@ WSGI_APPLICATION = 'stocks_products.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'netology_stocks_products',
-        'HOST': '127.0.0.1',
+        'NAME': 'netology_crud',
+        'HOST': 'localhost',
         'PORT': '5432',
+        'USER': 'test',
+        'PASSWORD': 'test',
     }
 }
+
 
 
 # Password validation
@@ -129,3 +134,16 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5,
+    'DEFAULT_FILTER_BACKENDS': [
+        # 'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+        # 'rest_framework.filters.OrderingFilter',
+    ],
+    'SEARCH_PARAM': 'search', # изменение названия параметра фильтрации для url
+    'ORDERING_PARAM': 'o', # изменение названия параметра фильтрации для url
+}
+
